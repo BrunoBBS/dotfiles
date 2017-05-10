@@ -1,3 +1,3 @@
 #!/bin/sh
 
-for file in $(ls -a ~/dotfiles); do ln -s ~/dotfiles/$file ~/; done
+for file in $(ls -a ~/dotfiles); do ln -s -f ~/dotfiles/$file ~/; done
