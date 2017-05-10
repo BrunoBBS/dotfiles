@@ -13,7 +13,6 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugins
 Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/nerdtree'
-"Plugin 'ervandew/supertab'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'tpope/vim-fugitive'
@@ -24,9 +23,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'jistr/vim-nerdtree-tabs'
-"Plugin 'Valloric/YouCompleteMe'
 Plugin 'shougo/neocomplcache.vim'
-"Plugin 'Shougo/deoplete.nvim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Yggdroot/indentLine'
 Plugin 'sheerun/vim-polyglot'
@@ -56,22 +53,10 @@ set shiftwidth=4
 set autoindent
 set mouse=a
 set textwidth=80
-set guifont=Roboto\ Mono\ for\ Powerline\ 11
 set cursorline
 set background=dark
 colorscheme Benokai
 let g:airline_theme='badwolf'
-
-
-"func! WordProcessorMode()
-"    setlocal textwidth=80
-"    setlocal smartindent
-"    setlocal spell spelllang=pt_br
-"    setlocal noexpandtab
-"endfu
-
-"com! WP call WordProcessorMode()
-
 
 if has("syntax")
     syntax on
@@ -79,30 +64,25 @@ if has("syntax")
     au BufNewFile,BufRead *.jq set filetype=javascript
 endif
 
-let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-
 let g:airline_symbols.space = "\ua0"
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 set t_Co=256
 if (has("termguicolors"))
     set termguicolors
 endif
 
-let g:airline#extensions#tabline#enabled = 1
-
 let g:NERDTreeWinPos = "left"
 let g:nerdtree_tabs_open_on_console_startup = 1
 let g:tagbar_left = 0
 let g:tagbar_width = 25
 
-"hi Normal ctermbg=none
-
 "Syntastic things
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_error_symbol = "X>"
 let g:syntastic_warning_symbol = "!>"
@@ -124,15 +104,6 @@ match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
 silent! map <F2> :Autoformat<CR>
 silent! map <F5> :NERDTreeToggle<CR>
 silent! map <F6> :TagbarToggle<CR>
-"au BufWrite * :Autoformat
-
-"indent guides colors
-let g:indent_guides_auto_colors = 0 
-hi IndentGuidesOdd  ctermbg=lightgrey
-hi IndentGuidesEven ctermbg=3
-let g:indent_guides_guide_size = 1
-let g:indent_guides_enable_on_vim_startup = 0
-let g:indent_guides_start_level = 2
 
 "indent Line
 let g:indentLine_enabled = 1
@@ -147,69 +118,7 @@ let g:neocomplcache_auto_completion_start_length = 3
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
-"deoplete
-let g:deoplete#enable_at_startup = 1
-
-function! TabTagbar()
-    let tagbar_open = bufwinnr('__Tagbar__') != -1
-    if !tagbar_open
-        TagbarOpen
-
-        wincmd w
-        wincmd J
-        wincmd k
-        wincmd L
-        wincmd H
-        wincmd w
-        :vertical resize 30
-        wincmd w
-        wincmd w
-    endif
-endfunction
-
-function! ToggleNERDTreeAndTagbar()
-    let w:jumpbacktohere = 1
-
-    " Detect which plugins are open
-    if exists('t:NERDTreeBufName')
-        let nerdtree_open = bufwinnr(t:NERDTreeBufName) != -1
-    else
-        let nerdtree_open = 0
-    endif
-    let tagbar_open = bufwinnr('__Tagbar__') != -1
-
-    " Perform the appropriate action
-    if !nerdtree_open
-        NERDTree
-    endif
-    if !tagbar_open
-        TagbarOpen
-    endif
-
-    wincmd J
-    wincmd k
-    wincmd L
-
-    " Jump back to the original window
-    for window in range(1, winnr('$'))
-        execute window . 'wincmd w'
-        if exists('w:jumpbacktohere')
-            unlet w:jumpbacktohere
-            wincmd H
-            break
-        endif
-    endfor
-    wincmd w
-    :vertical resize 30
-    wincmd w
-    wincmd w
-endfunction
-"nnoremap <leader>\ :call ToggleNERDTreeAndTagbar()<CR>
-
-"autocmd VimEnter * :call ToggleNERDTreeAndTagbar()
-"autocmd TabEnter * :call TabTagbar()
-
-inbow parenthesis
+"Raininbow parenthesis
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 let g:rainbow_conf = {
     \   'ctermfgs': [28, 127, 20, 58],
