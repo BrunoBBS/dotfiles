@@ -1,3 +1,3 @@
 #!/bin/sh
 
-for file in $(ls -a ~/dotfiles); do ln -s -f ~/dotfiles/$file ~/; done
+for file in $(ls -a ~/dotfiles | grep -v "git"); do ln -s -f ~/dotfiles/$file ~/; done
