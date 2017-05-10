@@ -1,0 +1,11 @@
+$include /etc/inputrc
+
+# for line seach
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\e[C": forward-char
+"\e[D": backward-char
+
+# stop line bell
+set bell-style none
+set completion-ignore-case On
