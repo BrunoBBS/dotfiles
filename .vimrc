@@ -107,7 +107,7 @@ silent! map <F6> :TagbarToggle<CR>
 
 "indent Line
 let g:indentLine_enabled = 1
-let g:indentLine_setColors = 1 
+let g:indentLine_setColors = 1
 let g:indentLine_color_term = 0
 let g:indentLine_char = '¦'
 
@@ -121,9 +121,9 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 "Raininbow parenthesis
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 let g:rainbow_conf = {
-    \   'ctermfgs': [28, 127, 20, 58],
-    \   'operators': '_,_',
-    \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
-    \}
+            \   'ctermfgs': [28, 126, 33, 202],
+            \   'operators': '_,_',
+            \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+            \}
 
 
