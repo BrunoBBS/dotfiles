@@ -78,6 +78,7 @@ if (has("termguicolors"))
 endif
 
 let g:NERDTreeWinPos = "left"
+let g:NERDTreeWinWidth = 25
 let g:nerdtree_tabs_open_on_console_startup = 1
 let g:tagbar_left = 0
 let g:tagbar_width = 25
@@ -89,7 +90,7 @@ let g:syntastic_warning_symbol = "!>"
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_style_error_symbol = 'S>'
 let g:syntastic_style_warning_symbol = 'S>'
-let g:syntastic_auto_jump = 1
+let g:syntastic_auto_jump = 0
 let g:syntastic_loc_list_height = 5
 
 "highlight link SyntasticErrorSign SignColumn
@@ -113,8 +114,9 @@ let g:indentLine_char = '¦'
 
 
 "neocomplcache things
+let	g:neocomplcache_enable_ignore_case = 1
 let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_auto_completion_start_length = 3
+let g:neocomplcache_auto_completion_start_length = 2
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
