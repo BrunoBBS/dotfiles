@@ -92,6 +92,7 @@ let g:syntastic_style_error_symbol = 'S>'
 let g:syntastic_style_warning_symbol = 'S>'
 let g:syntastic_auto_jump = 0
 let g:syntastic_loc_list_height = 5
+let g:syntastic_java_javac_options = '-Xlint -encoding UTF-8 -classpath ~/323/algs4.jar'
 
 "highlight link SyntasticErrorSign SignColumn
 "highlight link SyntasticWarningSign SignColumn
