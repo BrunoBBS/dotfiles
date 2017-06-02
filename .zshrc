@@ -24,7 +24,7 @@ POWERLEVEL9K_STATUS_OK_BACKGROUND="black"
 POWERLEVEL9K_STATUS_OK_FOREGROUND="green"
 POWERLEVEL9K_STATUS_ERROR_BACKGROUND="black"
 POWERLEVEL9K_STATUS_ERROR_FOREGROUND="red"
-POWERLEVEL9K_TIME_FORMAT="%D{%H:%M} \uf473"
+POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status background_jobs root_indicator context dir vcs battery)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(load ram rbenv time)
 POWERLEVEL9K_CHANGESET_HASH_LENGTH=6
@@ -118,3 +118,10 @@ export PATH="$PATH:$HOME/.rvm/scripts/rvm"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+# This turns on or off prompt refreshing (real time updates)
+#TMOUT=1
+#TRAPALRM() {
+#	zle reset-prompt
+#}

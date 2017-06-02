@@ -29,6 +29,7 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'luochen1990/rainbow'
+Plugin 'joeytwiddle/sexy_scroller.vim'
 
 
 " All of your Plugins must be added before the following line
@@ -79,7 +80,7 @@ endif
 
 let g:NERDTreeWinPos = "left"
 let g:NERDTreeWinWidth = 25
-let g:nerdtree_tabs_open_on_console_startup = 1
+let g:nerdtree_tabs_open_on_console_startup = 0 
 let g:tagbar_left = 0
 let g:tagbar_width = 25
 
@@ -111,6 +112,7 @@ let g:indentLine_enabled = 1
 let g:indentLine_setColors = 1
 let g:indentLine_color_term = 0
 let g:indentLine_char = '¦'
+
 
 
 "neocomplcache things
