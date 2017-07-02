@@ -79,8 +79,9 @@ plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
-export CLASSPATH=$CLASSPATH:~/Documentos/BCC-USP/3Sem/323/algs4.jar
+export CLASSPATH=$CLASSPATH:~/Documentos/BCC-USP/3Sem/323/algs4.jar;
 export CLASSPATH=$CLASSPATH:~/algs4.jar
+export CLASSPATH=$CLASSPATH:.:..:~/Documentos/Modelagem/MAC0209/EP3/lib/osp.jar
 
 alias rm='rm -I'
 export PATH="$PATH:."
