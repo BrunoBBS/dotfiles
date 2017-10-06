@@ -23,13 +23,20 @@ Plugin 'Conque-GDB'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'shougo/neocomplcache.vim'
+Plugin 'Rip-Rip/clang_complete'
 Plugin 'Yggdroot/indentLine'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'luochen1990/rainbow'
 Plugin 'joeytwiddle/sexy_scroller.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/neosnippet.vim'
+Plugin 'Shougo/neosnippet-snippets'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/neoinclude.vim'
+Plugin 'kristijanhusak/vim-hybrid-material'
+Plugin 'sonph/onehalf'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -55,7 +62,8 @@ set mouse=a
 set textwidth=80
 set cursorline
 set background=dark
-colorscheme Benokai
+"colorscheme Benokai
+colorscheme onedark
 let g:airline_theme='badwolf'
 
 if has("syntax")
@@ -77,9 +85,11 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
+
+
 let g:NERDTreeWinPos = "left"
 let g:NERDTreeWinWidth = 25
-let g:nerdtree_tabs_open_on_console_startup = 0 
+let g:nerdtree_tabs_open_on_console_startup = 0
 let g:tagbar_left = 0
 let g:tagbar_width = 25
 
@@ -108,6 +118,10 @@ silent! map <F2> :Autoformat<CR>
 silent! map <F5> :NERDTreeToggle<CR>
 silent! map <F6> :TagbarToggle<CR>
 
+
+let g:tagbar_autoclose = 0
+autocmd FileType * nested :call tagbar#autoopen(0)
+
 "indent Line
 let g:indentLine_enabled = 1
 let g:indentLine_setColors = 1
@@ -115,11 +129,30 @@ let g:indentLine_color_term = 0
 let g:indentLine_char = '¦'
 
 
+"neocomplete things
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 2
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.php = '[^.\t]->\h\w*\|\h\w*::'
+let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:]*\t]\%(\.\|->\)'
+let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:]*\t]\%(\.\|->\)\|\h\w*::'
+set completeopt-=preview
+
+
+"clang-comlete
+let g:clang_library_path = '/usr/lib/rstudio/bin/rsclang/'
+
 
 "neocomplcache things
-let	g:neocomplcache_enable_ignore_case = 1
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_auto_completion_start_length = 2
+"let g:neocomplcache_enable_ignore_case = 1
+"let g:neocomplcache_enable_at_startup = 1
+"let g:neocomplcache_auto_completion_start_length = 2
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 

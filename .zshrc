@@ -2,13 +2,17 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 export TERM="xterm-256color"
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="powerlevel9k/powerlevel9k"
+if [[ -n $SSH_CONNECTION ]]; then
+    ZSH_THEME="bira"
+else
+    ZSH_THEME="powerlevel9k/powerlevel9k"
+fi
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_NODE_VERSION_BACKGROUND='28'
 POWERLEVEL9K_NODE_VERSION_FOREGROUND='15'
@@ -86,10 +90,33 @@ export CLASSPATH=$CLASSPATH:.:..:~/Documentos/Modelagem/MAC0209/EP3/lib/osp.jar
 alias rm='rm -I'
 export PATH="$PATH:."
 export PATH=$PATH:$HOME/bin
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
- export PATH="$PATH:$HOME/.rvm/bin"
-export PATH="$PATH:$HOME/.rvm/scripts/rvm"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+export PATH=$PATH:/home/bcc/brunobbs/.gem/ruby/2.1.0/bin
+
+alias uncompress='extract'
+alias decompress='extract'
+function extract()      # Handy Extract Program
+{
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xvjf $1     ;;
+            *.tar.gz)    tar xvzf $1     ;;
+            *.bz2)       bunzip2 $1      ;;
+            *.rar)       unrar x $1      ;;
+            *.gz)        gunzip $1       ;;
+            *.tar)       tar xvf $1      ;;
+            *.tbz2)      tar xvjf $1     ;;
+            *.tgz)       tar xvzf $1     ;;
+            *.zip)       unzip $1        ;;
+            *.Z)         uncompress $1   ;;
+            *.7z)        7z x $1         ;;
+            *)           echo "'$1' cannot be extracted via >extract<" ;;
+        esac
+    else
+        echo "'$1' is not a valid file!"
+    fi
+}
+
+source /home/bcc/brunobbs/.rvm/scripts/rvm
 
 # User configuration
 
@@ -124,5 +151,5 @@ export PATH="$PATH:$HOME/.rvm/scripts/rvm"
 # This turns on or off prompt refreshing (real time updates)
 #TMOUT=1
 #TRAPALRM() {
-#	zle reset-prompt
+#   zle reset-prompt
 #}
