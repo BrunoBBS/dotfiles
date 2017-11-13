@@ -15,7 +15,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'majutsushi/tagbar'
@@ -35,15 +35,15 @@ Plugin 'Shougo/neosnippet.vim'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/neoinclude.vim'
-Plugin 'kristijanhusak/vim-hybrid-material'
-Plugin 'sonph/onehalf'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'guns/xterm-color-table.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
-"
+
 " Brief help
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
@@ -62,9 +62,9 @@ set mouse=a
 set textwidth=80
 set cursorline
 set background=dark
-"colorscheme Benokai
-colorscheme onedark
-let g:airline_theme='badwolf'
+set colorcolumn=81
+colorscheme Benokai
+let g:airline_theme='atomic'
 
 if has("syntax")
     syntax on
@@ -86,10 +86,23 @@ if (has("termguicolors"))
 endif
 
 
+"Ctrlp things
+let g:ctrlp_switch_buffer = 1
+let g:ctrlp_tabpage_position = 'ac'
+let g:ctrlp_use_caching = 1
+"Exclude object files
+set wildignore+=*/*.o
 
+"Nerdtree things
 let g:NERDTreeWinPos = "left"
 let g:NERDTreeWinWidth = 25
 let g:nerdtree_tabs_open_on_console_startup = 0
+
+"Nerdcommenter things
+let g:NERDSpaceDelims = 1
+let g:NERDRemoveExtraSpaces = 1
+
+"Tagbar things
 let g:tagbar_left = 0
 let g:tagbar_width = 25
 
@@ -103,6 +116,8 @@ let g:syntastic_style_warning_symbol = 'S>'
 let g:syntastic_auto_jump = 0
 let g:syntastic_loc_list_height = 5
 let g:syntastic_java_javac_options = '-Xlint -encoding UTF-8 -classpath ~/algs4.jar'
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
 
 "highlight link SyntasticErrorSign SignColumn
@@ -128,6 +143,19 @@ let g:indentLine_setColors = 1
 let g:indentLine_color_term = 0
 let g:indentLine_char = '¦'
 
+"Sexyscroller things
+let g:SexyScroller_EasingStyle = 4
+let g:SexyScroller_ScrollTime = 100
+let g:SexyScroller_CursorTime = 50
+let g:SexyScroller_MaxTime = 200
+
+
+"Gitgutter things
+hi GitGutterAdd          ctermbg=2  ctermfg=2" an added line
+hi GitGutterChange       ctermbg=3  ctermfg=3" a changed line
+hi GitGutterDelete       ctermbg=1  ctermfg=1" at least one removed line
+hi GitGutterChangeDelete ctermbg=4  ctermfg=4" a changed line followed by at least one removed line
+
 
 "neocomplete things
 let g:neocomplete#enable_at_startup = 1
@@ -147,6 +175,9 @@ set completeopt-=preview
 
 "clang-comlete
 let g:clang_library_path = '/usr/lib/rstudio/bin/rsclang/'
+let g:clang_snippets = 1
+let g:clang_conceal_snippets = 1
+let g:clang_snippets_engine='clang_complete'
 
 
 "neocomplcache things
