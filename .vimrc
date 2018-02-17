@@ -15,28 +15,31 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tpope/vim-fugitive'
-Plugin 'altercation/vim-colors-solarized'
+" Plugin 'tpope/vim-fugitive'
+" Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'majutsushi/tagbar'
-Plugin 'Conque-GDB'
+" Plugin 'Conque-GDB'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'Rip-Rip/clang_complete'
+" Plugin 'Rip-Rip/clang_complete'
 Plugin 'Yggdroot/indentLine'
-Plugin 'sheerun/vim-polyglot'
+" Plugin 'sheerun/vim-polyglot'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'luochen1990/rainbow'
-Plugin 'joeytwiddle/sexy_scroller.vim'
+" Plugin 'joeytwiddle/sexy_scroller.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/neosnippet.vim'
-Plugin 'Shougo/neosnippet-snippets'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'Shougo/neoinclude.vim'
+" Plugin 'Shougo/neosnippet.vim'
+" Plugin 'Shougo/neosnippet-snippets'
+" Plugin 'Shougo/neocomplete.vim'
+" Plugin 'Shougo/neoinclude.vim'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'zchee/deoplete-clang'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'guns/xterm-color-table.vim'
+" Plugin 'guns/xterm-color-table.vim'
+" Plugin 'mattn/emmet-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -56,10 +59,10 @@ set number
 set expandtab
 set tabstop=4
 set softtabstop=4
-set shiftwidth=4
+set shiftwidth=0
 set autoindent
 set mouse=a
-set textwidth=80
+" set textwidth=80
 set cursorline
 set background=dark
 set colorcolumn=81
@@ -74,7 +77,7 @@ endif
 
 
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+  let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
 let g:airline#extensions#tabline#enabled = 1
@@ -82,9 +85,13 @@ let g:airline_powerline_fonts = 1
 
 set t_Co=256
 if (has("termguicolors"))
-    set termguicolors
+  set termguicolors
 endif
 
+" Abbreviations useful to save and exit
+cab W w | cab Q q | cab Wq wq | cab wQ wq | cab WQ wq
+cab Wa wa | cab Qa qa | cab Wqa wqa | cab wQa wqa | cab wqA wqa
+cab WQa wqa | cab WqA wqa | cab wQA wqa | cab WQA wqa
 
 "Ctrlp things
 let g:ctrlp_switch_buffer = 1
@@ -117,7 +124,7 @@ let g:syntastic_auto_jump = 0
 let g:syntastic_loc_list_height = 5
 let g:syntastic_java_javac_options = '-Xlint -encoding UTF-8 -classpath ~/algs4.jar'
 let g:syntastic_cpp_compiler = 'g++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
+let g:syntastic_cpp_compiler_options = ' -std=c++14'
 
 
 "highlight link SyntasticErrorSign SignColumn
@@ -157,35 +164,33 @@ hi GitGutterDelete       ctermbg=1  ctermfg=1" at least one removed line
 hi GitGutterChangeDelete ctermbg=4  ctermfg=4" a changed line followed by at least one removed line
 
 
-"neocomplete things
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 2
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
 
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
-endif
-let g:neocomplete#sources#omni#input_patterns.php = '[^.\t]->\h\w*\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:]*\t]\%(\.\|->\)'
-let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:]*\t]\%(\.\|->\)\|\h\w*::'
-set completeopt-=preview
+
+" " neocomplete things
+" let g:neocomplete#enable_at_startup = 1
+" let g:neocomplete#enable_smart_case = 1
+" let g:neocomplete#sources#syntax#min_keyword_length = 2
+" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+
+" " Enable heavy omni completion.
+" if !exists('g:neocomplete#sources#omni#input_patterns')
+  " let g:neocomplete#sources#omni#input_patterns = {}
+" endif
+" let g:neocomplete#sources#omni#input_patterns.php = '[^.\t]->\h\w*\|\h\w*::'
+" let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:]*\t]\%(\.\|->\)'
+" let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:]*\t]\%(\.\|->\)\|\h\w*::'
+" set completeopt-=preview
 
 
 "clang-comlete
-let g:clang_library_path = '/usr/lib/rstudio/bin/rsclang/'
+let g:clang_library_path = '/usr/lib'
 let g:clang_snippets = 1
 let g:clang_conceal_snippets = 1
+let g:clang_complete_auto = 1
 let g:clang_snippets_engine='clang_complete'
 
-
-"neocomplcache things
-"let g:neocomplcache_enable_ignore_case = 1
-"let g:neocomplcache_enable_at_startup = 1
-"let g:neocomplcache_auto_completion_start_length = 2
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 "Raininbow parenthesis
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
@@ -194,5 +199,3 @@ let g:rainbow_conf = {
             \   'operators': '_,_',
             \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
             \}
-
-
