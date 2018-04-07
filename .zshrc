@@ -92,6 +92,8 @@ export PATH="$PATH:."
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:/home/bbs/.gem/ruby/2.5.0/bin
 
+alias pacman='pacman --color always'
+
 alias vim='nvim'
 
 alias uncompress='extract'
