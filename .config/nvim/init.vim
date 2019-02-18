@@ -14,8 +14,9 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'airblade/vim-gitgutter'
 " Plug 'majutsushi/tagbar'
 Plug 'fishbullet/deoplete-ruby', { 'for': 'ruby' }
-Plug 'vim-airline/vim-airline', { 'on': 'AirlineToggle' }
+Plug 'vim-airline/vim-airline'
 Plug 'jistr/vim-nerdtree-tabs'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Web devel
 Plug 'mattn/emmet-vim', { 'for': ['javascript', 'html', 'vue']}
@@ -32,12 +33,17 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'zchee/libclang-python3', { 'for': ['c', 'cpp'] }
 Plug 'Shougo/neoinclude.vim', { 'for': ['c', 'cpp'] }
 Plug 'zchee/deoplete-clang', { 'for': ['c', 'cpp'] }
+Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
 
+" Python devel
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " Initialize plugin system
 call plug#end()
 
 set cursorline
+" set relativenumber
+set number
 set colorcolumn=81
 set mouse=a
 set expandtab
@@ -60,9 +66,10 @@ cab Wa wa | cab Qa qa | cab Wqa wqa | cab wQa wqa | cab wqA wqa
 cab WQa wqa | cab WqA wqa | cab wQA wqa | cab WQA wqa
 
 " Airline things
+set laststatus=2
 let g:airline_theme='atomic'
 if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
+    let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
 let g:airline#extensions#tabline#enabled = 1

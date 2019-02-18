@@ -90,9 +90,13 @@ export CLASSPATH=$CLASSPATH:.:..:~/Documentos/Modelagem/MAC0209/EP3/lib/osp.jar
 alias rm='rm -I'
 export PATH="$PATH:."
 export PATH=$PATH:$HOME/bin
-export PATH=$PATH:/home/bbs/.gem/ruby/2.5.0/bin
+export PATH=$PATH:/home/brunobbs/.gem/ruby/2.5.0/bin
+export PATH=$PATH:$HOME/Documents/IC/FLAME/xparser
+
+export FLAME_XPARSER_DIR=$HOME/Documents/IC/FLAME/xparser
 
 alias pacman='pacman --color always'
+alias ggc='git gcommit'
 
 alias vim='nvim'
 
@@ -156,3 +160,5 @@ function extract()      # Handy Extract Program
 #TRAPALRM() {
 #   zle reset-prompt
 #}
+
+unsetopt share_history
