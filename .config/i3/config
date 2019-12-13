@@ -13,7 +13,8 @@ set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+# font pango:MyriadSetPro\-Thin light 11
+font pango:MyriadSetPro\-Ultralight light 11
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -30,45 +31,66 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start apps
-bindsym $mod+Return exec terminator
-bindsym $mod+b      exec nautilus
-bindsym $mod+n      exec chromium  
+# bindsym $mod+Return exec terminator
+# bindsym $mod+b      exec nautilus
+# bindsym $mod+n      exec chromium  
 
 
-exec xinput --set-prop "ELAN0501:01 04F3:3060 Touchpad" "libinput Tapping Enabled" 1
-exec xinput --set-prop "ELAN0501:01 04F3:3060 Touchpad" "libinput Natural Scrolling Enabled" 1
+# exec xinput --set-prop "ELAN0501:01 04F3:3060 Touchpad" "libinput Tapping Enabled" 1
+# exec xinput --set-prop "ELAN0501:01 04F3:3060 Touchpad" "libinput Natural Scrolling Enabled" 1
+
+
+
+
+# >>> plasma integration <<<
+
+# try to kill the wallpaper set by plasma (it takes up the entire workspace
+# and hides everythiing)
+exec --no-startup-id wmctrl -c plasma
+for_window [title="desktop — plasma"] kill; floating enable; border none
+
+# Avoid tiling popups, dropdown windows from plasma
+for_window [class="plasmashell"] floating enable
+for_window [class="Plasma"] floating enable
+for_window [class="krunner"] floating enable
+for_window [class="Kmix"] floating enable
+for_window [class="Klipper"] floating enable
+for_window [class="Plasmoidviewer"] floating enable
+
+# >>> Window Rules <<<
+
+# >>> Avoid tiling for non-Plasma stuff <<<
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_role="About"] floating enable 
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+
 exec compton -CGb
-exec feh --bg-fill ~/Downloads/dirty-thunderstorm-wallpaper.jpg
+exec feh --bg-fill ~/resized2.gif
 
+
+#
+#
 # kill focused window
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+# bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+ccedilla focus right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+ccedilla move right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -112,6 +134,7 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -164,11 +187,30 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-    status_command python ~/.config/i3pystatus/config.py
-    position bottom
-    workspace_buttons yes
-}
+# bar {
+    # status_command python ~/.config/i3pystatus/config.py
+    # position bottom
+    # workspace_buttons yes
+# }
+
+
 # I3 gaps config
+smart_gaps on
+smart_borders on
 gaps outer 10
 gaps inner 10
+
+
+
+################################################################################
+#######################            THEME          ##############################
+################################################################################
+# class                 border  bground text    indicator child_border
+client.focused          #C73E1D #C73E1D #FBF5F3 #F18F01   #F18F01
+client.focused_inactive #000022 #000022 #888888 #000022   #5F676A
+client.unfocused        #000022 #000022 #FBF5F3 #000022   #222222
+client.urgent           #2F343A #20BF55 #FBF5F3 #20BF55   #20BF55
+client.placeholder      #000000 #0C0C0C #FBF5F3 #000022   #0C0C0C
+
+client.background       #FFFFFF
+
