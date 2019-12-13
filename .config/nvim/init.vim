@@ -8,7 +8,7 @@ call plug#begin('~/.vim/plugged')
 " System and interface
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'Chiel92/vim-autoformat'
 Plug 'airblade/vim-gitgutter'
@@ -32,7 +32,7 @@ Plug 'ryanoasis/vim-devicons'
 " C family devel
 Plug 'zchee/libclang-python3', { 'for': ['c', 'cpp'] }
 Plug 'Shougo/neoinclude.vim', { 'for': ['c', 'cpp'] }
-Plug 'zchee/deoplete-clang', { 'for': ['c', 'cpp'] }
+" Plug 'zchee/deoplete-clang', { 'for': ['c', 'cpp'] }
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
 
 " Python devel
@@ -42,7 +42,7 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 call plug#end()
 
 set cursorline
-" set relativenumber
+set relativenumber
 set number
 set colorcolumn=81
 set mouse=a

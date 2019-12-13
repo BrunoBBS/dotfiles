@@ -5,6 +5,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 export TERM="xterm-256color"
+export LANG=en_US.UTF-8
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -79,18 +80,15 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting)
+plugins=(git zsh-syntax-highlighting docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
-export CLASSPATH=$CLASSPATH:~/Documentos/BCC-USP/3Sem/323/algs4.jar;
-export CLASSPATH=$CLASSPATH:~/algs4.jar
-export CLASSPATH=$CLASSPATH:.:..:~/Documentos/Modelagem/MAC0209/EP3/lib/osp.jar
 
 alias rm='rm -I'
 export PATH="$PATH:."
 export PATH=$PATH:$HOME/bin
-export PATH=$PATH:/home/brunobbs/.gem/ruby/2.5.0/bin
+export PATH=$PATH:/home/brunobbs/.gem/ruby/2.6.0/bin
 export PATH=$PATH:$HOME/Documents/IC/FLAME/xparser
 
 export FLAME_XPARSER_DIR=$HOME/Documents/IC/FLAME/xparser
@@ -99,6 +97,7 @@ alias pacman='pacman --color always'
 alias ggc='git gcommit'
 
 alias vim='nvim'
+alias c='code -r'
 
 alias uncompress='extract'
 alias decompress='extract'
