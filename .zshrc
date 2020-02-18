@@ -12,7 +12,7 @@ export LANG=en_US.UTF-8
 if [[ -n $SSH_CONNECTION ]]; then
     ZSH_THEME="bira"
 else
-    ZSH_THEME="powerlevel9k/powerlevel9k"
+    ZSH_THEME="powerlevel10k/powerlevel10k"
 fi
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_NODE_VERSION_BACKGROUND='28'

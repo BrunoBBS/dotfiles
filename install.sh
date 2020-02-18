@@ -27,8 +27,8 @@ echo "Installing oh-my-zsh..."
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - 1>> /dev/null 2>> /dev/null)" 1>> /dev/null 2>> /dev/null
 echo "done"
 
-echo "Installing powerlevel9k theme"
-git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k 1>> /dev/null 2>> /dev/null
+echo "Installing powerlevel10k theme"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k 1>> /dev/null 2>> /dev/null
 echo "done"
 
 echo "Creating links..."
