@@ -47,7 +47,7 @@ floating_modifier $mod
 # try to kill the wallpaper set by plasma (it takes up the entire workspace
 # and hides everythiing)
 exec --no-startup-id wmctrl -c plasma
-for_window [title="desktop — plasma"] kill; floating enable; border none
+for_window [title="Desktop — Plasma"] exec notify-send -i terminal "Welcome!";exec sleep 1;  kill;
 
 # Avoid tiling popups, dropdown windows from plasma
 for_window [class="plasmashell"] floating enable
@@ -69,7 +69,7 @@ for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 
 exec compton -CGb
-exec feh --bg-fill ~/resized2.gif
+exec feh --bg-fill ~/resized3.gif
 
 
 #
