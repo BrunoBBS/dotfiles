@@ -32,7 +32,12 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/the
 echo "done"
 
 echo "Creating links..."
-for file in $(ls -a ~/dotfiles | grep -v "git"); do ln -s -f ~/dotfiles/$file ~/; done 1>> /dev/null 2>> /dev/null
+for entry in $(cat files.rc); do                                                      
+    target=$(echo $entry | cut -d";" -f1)                                            
+    location=$(echo $entry | cut -d";" -f2)                                          
+    echo $target to $location                                                        
+    ln -s -T --suffix=./backup --backup=simple  "$(pwd)/$target" $HOME/$location     
+done
 echo "done"
 
 echo "Post Cleanng...."

@@ -1,0 +1,14 @@
+.bashrc;.bashrc
+.inputrc;.inputrc
+.vimrc;.vimrc
+.zshrc;.zshrc
+.oh-my-zsh;.oh-my-zsh
+.config/awesome;.config/awesome
+.config/i3;.config/i3
+.config/i3pystatus;.config/i3pystatus
+.config/nvim;.config/nvim
+.config/qtile;.config/qtile
+.config/terminator;.config/terminator
+.config/compton.conf;.config/compton.conf
+.config/i3_plasma.sh;.config/i3_plasma.sh
+
