@@ -1,34 +1,34 @@
 #!/bin/sh
 
 echo "Configuring nvim..."
-mkdir -p ~/.config/nvim 1>> /dev/null 2>> /dev/null
-ln -s -f ~/dotfiles/.config/nvim/init.vim ~/.config/nvim 1>> /dev/null 2>> /dev/null
-sudo pip install neovim 1>> /dev/null 2>> /dev/null
+mkdir -p ~/.config/nvim
+ln -s -f ~/dotfiles/.config/nvim/init.vim ~/.config/nvim
+sudo pip install neovim 
 echo "done"
 
 echo "Configuring fonts..."
 mkdir -p ~/.fonts 1>> /dev/null 2>> /dev/null
-wget https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FantasqueSansMono/Regular/complete/Fantasque%20Sans%20Mono%20Regular%20Nerd%20Font%20Complete.ttf?raw=true -o ~/.fonts/Fantasque.ttf 1>> /dev/null 2>> /dev/null
+wget https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FantasqueSansMono/Regular/complete/Fantasque%20Sans%20Mono%20Regular%20Nerd%20Font%20Complete.ttf?raw=true -O ~/.fonts/Fantasque.ttf
 echo "done"
 
 echo "Creating .vim directory..."
-mkdir ~/.vim 1>> /dev/null 2>> /dev/null
+mkdir ~/.vim
 echo "done"
 
 echo "installing Vundle..."
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim 1>> /dev/null 2>> /dev/null
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 echo "done"
 
 echo "Installing Plug..."
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 1>> /dev/null 2>> /dev/null
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 echo "done"
 
 echo "Installing oh-my-zsh..."
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - 1>> /dev/null 2>> /dev/null)" 1>> /dev/null 2>> /dev/null
+sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 echo "done"
 
 echo "Installing powerlevel10k theme"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k 1>> /dev/null 2>> /dev/null
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 echo "done"
 
 echo "Creating links..."
@@ -36,11 +36,6 @@ for entry in $(cat files.rc); do
     target=$(echo $entry | cut -d";" -f1)                                            
     location=$(echo $entry | cut -d";" -f2)                                          
     echo $target to $location                                                        
-    ln -s -T --suffix=./backup --backup=simple  "$(pwd)/$target" $HOME/$location     
+    ln -s -T --suffix=$($pwd)/backup --backup=simple  "$(pwd)/$target" $HOME/$location     
 done
-echo "done"
-
-echo "Post Cleanng...."
-rm ~/install.sh 1>> /dev/null 2>> /dev/null
-rm ~/README.md 1>> /dev/null 2>> /dev/null
 echo "done"
