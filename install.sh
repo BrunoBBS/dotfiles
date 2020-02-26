@@ -28,7 +28,15 @@ sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools
 echo "done"
 
 echo "Installing powerlevel10k theme"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
+echo "done"
+
+echo "Installing YAY"
+git clone https://aur.archlinux.org/yay.git /tmp/yay
+dir=$(pwd)
+cd /tmp/yay
+makepkg -si
+cd $dir
 echo "done"
 
 echo "Creating links..."
