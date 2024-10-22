@@ -112,3 +112,5 @@ export PS1="\[$(tput bold)\]\[\033[38;5;184m\]\u\[$(tput sgr0)\]\[$(tput sgr0)\]
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+complete -C /usr/bin/terraform terraform

@@ -13,10 +13,33 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'Chiel92/vim-autoformat'
 Plug 'airblade/vim-gitgutter'
 " Plug 'majutsushi/tagbar'
-Plug 'fishbullet/deoplete-ruby', { 'for': 'ruby' }
 Plug 'vim-airline/vim-airline'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'ctrlpvim/ctrlp.vim'
+
+"---------------------------------
+"---  COQ Fast autocomplete   ---
+"---------------------------------
+"" main one
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+" 9000+ Snippets
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+
+
+"---------------------------------
+"--- Language Server Protocol ---
+"---------------------------------
+
+" last attempt
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'RishabhRD/popfix' " Required by lsputils
+" Plug 'RishabhRD/nvim-lsputils' " Enhance built in LSP functions
+" Plug 'hrsh7th/nvim-compe' " LSP Completion
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 " Web devel
 Plug 'mattn/emmet-vim', { 'for': ['javascript', 'html', 'vue']}
@@ -41,8 +64,13 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 " Initialize plugin system
 call plug#end()
 
+
+" let g:custom_path = '~/.config/nvim/'
+
+" "=== Nvim LSP Config ===
+" exec 'luafile' expand(g:custom_path . 'lua/lsp-config.lua')
+
 set cursorline
-set relativenumber
 set number
 set colorcolumn=81
 set mouse=a
@@ -55,7 +83,8 @@ set termguicolors
 set guicursor=n-v-c-i:block-Cursor
 set guicursor+=n-v-c:blinkon0
 set guicursor+=i:blinkwait10-blinkon30
-:hi Cursor gui=reverse guibg=NONE guifg=NONE
+hi Cursor gui=reverse guibg=NONE guifg=NONE
+hi Normal guibg=NONE ctermbg=NONE
 nmap <F2> :Autoformat<CR>
 nmap <F5> :NERDTreeToggle<CR>
 
@@ -110,3 +139,8 @@ hi GitGutterChange       ctermbg=3  ctermfg=3" a changed line
 hi GitGutterDelete       ctermbg=1  ctermfg=1" at least one removed line
 hi GitGutterChangeDelete ctermbg=4  ctermfg=4" a changed line followed by at least one removed line
 
+autocmd BufReadPost *.kt setlocal filetype=kotlin
+
+let g:LanguageClient_serverCommands = {
+    \ 'kotlin': ["kotlin-language-server"],
+    \ }

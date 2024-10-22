@@ -3,7 +3,7 @@
 echo "Configuring nvim..."
 mkdir -p ~/.config/nvim
 ln -s -f ~/dotfiles/.config/nvim/init.vim ~/.config/nvim
-sudo pip install neovim 
+sudo pip install neovim
 echo "done"
 
 echo "Configuring fonts..."
@@ -44,10 +44,10 @@ cd $dir
 echo "done"
 
 echo "Creating links..."
-for entry in $(cat files.rc); do                                                      
-    target=$(echo $entry | cut -d";" -f1)                                            
-    location=$(echo $entry | cut -d";" -f2)                                          
-    echo $target to $location                                                        
-    ln -s -T --suffix=$($pwd)/backup --backup=simple  "$(pwd)/$target" $HOME/$location     
+for entry in $(cat files.rc); do
+    target=$(echo $entry | cut -d";" -f1)
+    location=$(echo $entry | cut -d";" -f2)
+    echo $target to $location
+    ln -s -T --suffix=$($pwd)/backup --backup=simple  "$(pwd)/$target" $HOME/$location
 done
 echo "done"
